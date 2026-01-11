@@ -6,18 +6,18 @@ import { v4 } from "uuid";
 function App() {
   const [tasks, setTasks] = useState([{
     id: 1,
-    title: "Jogar The Legend Of Zelda: Tears Of Kingdom",
-    description: "Encontrar Zelda",
+    title: "Task 01 title",
+    description: "Task 01 description",
     isCompleted: false
   }, {
     id: 2,
-    title: "Jogar The Witcher 3",
-    description: "Salvar Ciri",
+    title: "Task 02 title",
+    description: "Task 02 description",
     isCompleted: false
   }, {
     id: 3,
-    title: "Assistir Formula 1",
-    description: "Canal: Band, 10h da manhã do sabado",
+    title: "Task 03 title",
+    description: "Task 03 description",
     isCompleted: false
   }]);
 
