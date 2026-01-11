@@ -1,25 +1,17 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AddTask from "./components/AddTask";
 import Tasks from "./components/Tasks";
 import { v4 } from "uuid";
 
 function App() {
-  const [tasks, setTasks] = useState([{
-    id: 1,
-    title: "Task 01 title",
-    description: "Task 01 description",
-    isCompleted: false
-  }, {
-    id: 2,
-    title: "Task 02 title",
-    description: "Task 02 description",
-    isCompleted: false
-  }, {
-    id: 3,
-    title: "Task 03 title",
-    description: "Task 03 description",
-    isCompleted: false
-  }]);
+  const [tasks, setTasks] = useState(
+    JSON.parse(localStorage.getItem("tasks")) || []
+  );
+
+  //EXECUTA UMA FUNÇÃO SEMPRE QUE LISTA FOR ALTERADA
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  }, [tasks])
 
   function onTaskClick(taskId) {
     // PARA CADA TASK DA LISTA DE TASK
