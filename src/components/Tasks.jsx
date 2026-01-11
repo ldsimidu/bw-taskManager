@@ -1,6 +1,16 @@
 import { ChevronRightIcon, Trash2  } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 function Tasks({ tasks, onTaskClick, onDeleteTaskClick }) {
+    
+    const navigate = useNavigate();
+    function onSeeDetailsClick(task) {
+        const query = new URLSearchParams();
+        query.set("title", task.title);
+        query.set("description", task.description);
+        navigate(`/task?${query.toString()}`);
+    }
+
     return (
         <ul className="space-y-4 pt-5 bg-gray-200 p-6 rounded-md shadow">
             {tasks.map((task) => (
@@ -14,7 +24,7 @@ function Tasks({ tasks, onTaskClick, onDeleteTaskClick }) {
                         {task.title}
                         {/* {task.isCompleted ? ":COMPLETE" : ":INCOMPLETE"} */}
                     </button>
-                    <button className="bg-slate-400 text-white p-2 rounded-md">
+                    <button onClick={() => onSeeDetailsClick(task)} className="bg-slate-400 text-white p-2 rounded-md">
                         <ChevronRightIcon />
                     </button>
                     <button
